@@ -9,11 +9,8 @@ categories:
       engines:
         mojeek:
           mul: 1
-  general:
-    engines:
-      google:
-        enabled: true
 
 server:
+  frontendurl: "http://localhost:5173"
   cache:
     type: none
