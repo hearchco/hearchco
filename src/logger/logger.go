@@ -7,9 +7,9 @@ import (
 	"path"
 	"time"
 
-	"github.com/natefinch/lumberjack"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
+	"gopkg.in/natefinch/lumberjack.v2"
 )
 
 func Setup(verbosity int8, logDirPath ...string) zerolog.Logger {
