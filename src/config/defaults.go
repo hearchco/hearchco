@@ -149,17 +149,17 @@ func New() Config {
 			Port:         3030,
 			FrontendUrls: []string{"http://localhost:5173"},
 			Cache: Cache{
-				Type: "badger",
+				Type: "sqlite",
 				TTL: TTL{
 					Time:        moretime.Week,
 					RefreshTime: 3 * moretime.Day,
 				},
-				Badger: Badger{
+				SQLite: SQLite{
 					Persist: true,
+					Path:    "./database",
 				},
-				Redis: Redis{
-					Host: "localhost",
-					Port: 6379,
+				Postgres: Postgres{
+					URI: "postgres://postgres:postgres@localhost:5432/postgres",
 				},
 			},
 			Proxy: Proxy{

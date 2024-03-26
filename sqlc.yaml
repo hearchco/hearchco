@@ -1,0 +1,17 @@
+version: "2"
+sql:
+  - engine: "sqlite"
+    queries: "sql/sqlite/queries"
+    schema: "sql/sqlite/migrations"
+    gen:
+      go:
+        package: "sqlite"
+        out: "src/cache/sqlite"
+  - engine: "postgresql"
+    queries: "sql/postgres/queries"
+    schema: "sql/postgres/migrations"
+    gen:
+      go:
+        package: "postgres"
+        out: "src/cache/postgres"
+        sql_package: "pgx/v5"

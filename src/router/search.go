@@ -145,13 +145,13 @@ func Search(w http.ResponseWriter, r *http.Request, db cache.DB, ttlConf config.
 	}
 
 	// search for results in db and web, afterwards return JSON
-	results, foundInDB := search.Search(query, options, db, settings, categories, salt)
+	results, foundInDB, cat := search.Search(query, options, db, settings, categories, salt)
 
 	// send response as soon as possible
 	err = writeResponseJSON(w, http.StatusOK, results)
 
 	// don't return immediately, we want to cache results and update them if necessary
-	search.CacheAndUpdateResults(query, options, db, ttlConf, settings, categories, results, foundInDB, salt)
+	search.CacheAndUpdateResults(query, cat, options, db, ttlConf, settings, categories, results, foundInDB, salt)
 
 	// if writing response failed, return the error
 	return err
